@@ -1,20 +1,79 @@
-<ion-header [translucent]="true">
+<ion-menu contentId="main-content" side="start">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>BlinkMatch</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-list class="top">
+  <ion-item routerLink="/home">
+    <ion-label>Inicio</ion-label>
+  </ion-item>
+  <ion-item routerLink="/acerca-de">
+    <ion-label>Acerca de</ion-label>
+  </ion-item>
+</ion-list>
+</ion-menu>
+
+
+<div class="ion-page" id="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+  <ion-content color="medium" class="ion-padding">
+
+
+
+
+fffffffffffff
+
+
+  </ion-content>
+
+
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title> Footer </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+</div>
+
+
+
+<ion-content class="ion-padding">
+  <!-- Mostrar patrón central -->
+  <div class="pattern-display">
+    <ion-text color="primary" class="display-pattern">
+      {{ patterns[correctPatternIndex] }}
+    </ion-text>
   </div>
+
+  <!-- Mensaje si el usuario acertó o falló -->
+  <div *ngIf="levelPassed !== null">
+    <ion-text [color]="levelPassed ? 'success' : 'danger'" class="level-message">
+      {{ levelPassed ? '¡Correcto! 🎉' : 'Patrón incorrecto. Intenta de nuevo.' }}
+    </ion-text>
+  </div>
+
+  <!-- Cuadrícula con las opciones -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let pattern of gridPatterns; let i = index">
+        <ion-button
+          expand="block"
+          (click)="selectPattern(pattern)">
+          {{ pattern }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
