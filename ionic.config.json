@@ -1,0 +1,7 @@
+{
+  "name": "BlinkMatch",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
